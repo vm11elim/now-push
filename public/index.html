@@ -6,8 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<body>
+<body onload="onload()">
   <div> I'm here.</div>
-  <div> Edited from git..!</div>
+  <form action="/abc" method="get">
+    <input type="submit" value="abc" 
+         name="이동" id="frm1_submit" />
+  </form>
+
+  
 </body>
+<script>
+  function test_debugger()
+  {
+
+  }
+  function onload() {
+    if(false)
+      test_debugger();
+  }  
+</script>
+
 </html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body onload="onload()">
+  <form action="../" method="get">
+    <input type="submit" value="home" />
+  </form>
+  <!-- 홈페이지로 가기. -->
+
+  <div> 유저목록입니다. </div>
+</body>
+
+
+<script>
+  function onload() {
+
+      load_data();
+  }
+
+  function load_data()
+  {
+    console.log("succe2ss");
+    var url = "https://asia-northeast3-now-push-5e29e.cloudfunctions.net/get";
+    // var url = "https://asia-northeast3-now-push-5e29e.cloudfunctions.net/get";
+    
+    fetch(url, { mode: "cors" })
+      .then(res => res.json())
+      .then(json => {
+        console.log(json);
+        var obj = JSON.parse(json);
+        console.log(obj);
+
+        console.log(obj['BnkYfgOfq4YQ27K3IhCp'].fcmToken);
+        console.log(obj['BnkYfgOfq4YQ27K3IhCp']);
+      });
+  }
+
+  // function sendPost(action){//}, params) {
+
+  //   var form = document.createElement('form');
+  //   form.setAttribute('method', 'post');
+  //   form.setAttribute('action', action);
+  //   document.charset = "utf-8";
+
+  //   // for (var key in params) 
+  //   // {
+  //   //   var hiddenField = document.createElement('input');
+  //   //   hiddenField.setAttribute('type', 'hidden');
+  //   //   hiddenField.setAttribute('name', key);
+  //   //   hiddenField.setAttribute('value', params[key]);
+  //   //   form.appendChild(hiddenField);
+  //   // }
+  //   document.body.appendChild(form);
+  //   form.submit();
+  // }
+
+
+</script>
+
+
+</html>
