@@ -1,13 +1,16 @@
 <template>
   <userlist msg="유저목록임."/>
+  <!-- <initialDB/> -->
 </template>
 
 <script>
 import userlist from './components/user/userlist.vue'
+import initialDB from './components/user/initialDB.vue'
 
 export default {
   name: 'App',
   components: {
+    initialDB,
     userlist
   }
 }
