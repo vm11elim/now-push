@@ -7,9 +7,12 @@
     <div id="columns"  v-if="view_type==0">
       <figure v-for="person in people" :key="person.id">
         
-        <img class="badge" :src="badge.bio" v-if="person.bio" align="left"/><!-- 생체 인증있을때만.  -->
-        <img class="avatar" :src="person.avatar" />
-        <img class="badge" :src="person.vote_value==1 ? badge.yes: badge.no" align="right"/>
+        <div class="avatars">
+          <img class="badge" :src="badge.bio" v-if="person.bio" align="left"/><!-- 생체 인증있을때만.  -->
+          <!-- <img class="avatar" :src="person.avatar" /> -->
+          <img :class='person.appinstall? "avatar" : "avatar_grey"' :src="person.avatar" />
+          <img class="badge" :src="person.vote_value==1 ? badge.yes: badge.no" align="right"/>
+        </div>
         <figtitle>{{person.team}}</figtitle>
         <figname >{{person.name}}</figname>           
         
@@ -23,7 +26,7 @@
         <h4>UC서비스팀</h4>
         <div v-for="person in people" :key="person.id">
           <figure v-if="(person.team ==='UC서비스팀')">
-            <img class="avatar" :src="person.avatar" />
+            <img :class='person.appinstall? "avatar" : "avatar_grey"' :src="person.avatar" />
             <figtitle>{{person.team}}</figtitle>
             <figname >{{person.name}}</figname>     
           </figure>
@@ -34,7 +37,7 @@
         <h4>경영지원팀</h4>
         <div v-for="person in people" :key="person.id">
           <figure v-if="(person.team ==='경영지원팀')">
-            <img class="avatar" :src="person.avatar" />
+            <img :class='person.appinstall? "avatar" : "avatar_grey"' :src="person.avatar" />
             <figtitle>{{person.team}}</figtitle>
             <figname >{{person.name}}</figname>     
           </figure>
@@ -45,7 +48,7 @@
         <h4>정보보안사업팀</h4>
         <div v-for="person in people" :key="person.id">
           <figure v-if="(person.team ==='정보보안사업팀')">
-            <img class="avatar" :src="person.avatar" />
+            <img :class='person.appinstall? "avatar" : "avatar_grey"' :src="person.avatar" />
             <figtitle>{{person.team}}</figtitle>
             <figname >{{person.name}}</figname>     
           </figure>
@@ -56,7 +59,7 @@
       <h4>개발팀</h4>
         <div v-for="person in people" :key="person.id">
           <figure v-if="(person.team ==='개발팀')">
-            <img class="avatar" :src="person.avatar" />
+            <img :class='person.appinstall? "avatar" : "avatar_grey"' :src="person.avatar" />
             <figtitle>{{person.team}}</figtitle>
             <figname >{{person.name}}</figname>     
           </figure>
@@ -67,7 +70,7 @@
         <h4>UC솔루션팀</h4>
         <div v-for="person in people" :key="person.id">
           <figure v-if="(person.team ==='UC솔루션팀')">
-            <img class="avatar" :src="person.avatar" />
+            <img :class='person.appinstall? "avatar" : "avatar_grey"' :src="person.avatar" />
             <figtitle>{{person.team}}</figtitle>
             <figname >{{person.name}}</figname>     
           </figure>
@@ -78,7 +81,7 @@
         <h4>서베이팀</h4>
         <div v-for="person in people" :key="person.id">
           <figure v-if="(person.team ==='서베이팀')">
-            <img class="avatar" :src="person.avatar" />
+            <img :class='person.appinstall? "avatar" : "avatar_grey"' :src="person.avatar" />
             <figtitle>{{person.team}}</figtitle>
             <figname >{{person.name}}</figname>     
           </figure>
@@ -98,8 +101,10 @@
       <div  id="columns" v-on="this.count.yes=0">
       <div v-for="person in people" :key="person.id">
         <figure v-if="person.vote_value==1" v-on="this.count.yes++">
-          <img class="badge" :src="badge.bio" v-if="person.bio" align="left"/><!-- 생체 인증있을때만.  -->
-          <img class="avatar" :src="person.avatar" />
+          <div class="avatars">
+            <img class="badge" :src="badge.bio" v-if="person.bio" align="left"/><!-- 생체 인증있을때만.  -->
+            <img :class='person.appinstall? "avatar" : "avatar_grey"' :src="person.avatar" />
+          </div>
           <figtitle>{{person.team}}</figtitle>
           <figname >{{person.name}}</figname>     
         </figure>
@@ -111,8 +116,10 @@
       <div  id="columns"  v-on="this.count.no=0">
       <div v-for="person in people" :key="person.id">
         <figure v-if="person.vote_value!=1"  v-on="this.count.no++" >
-          <img class="badge" :src="badge.bio" v-if="person.bio" align="left"/><!-- 생체 인증있을때만.  -->
-          <img class="avatar" :src="person.avatar" />
+          <div class="avatars">
+            <img class="badge" :src="badge.bio" v-if="person.bio" align="left"/><!-- 생체 인증있을때만.  -->
+            <img :class='person.appinstall? "avatar" : "avatar_grey"' :src="person.avatar" />
+          </div>
           <figtitle>{{person.team}}</figtitle>
           <figname >{{person.name}}</figname>     
         </figure>
@@ -142,7 +149,7 @@ export default {
   data() {
 
     return {
-      view_type:1,
+      view_type:2,
       count:{
         yes:0,
         no:0,
@@ -212,6 +219,7 @@ export default {
           person.agree = edited.agree;
           person.vote_value = edited.vote_value;
           person.bio = edited.bio;
+          person.appinstall = edited.appinstall;
           
           //1) 1회불러오기  => 업데이트event] + avatar 이미지 로딩 + 값 갱신. 
           //2) 1회불러오기+ avatar 이미지 로딩 => 업데이트event] 값 갱신.  2번 방식임. 
@@ -251,22 +259,36 @@ export default {
       }
       #columns figure{
         display: inline-block;
-        border:1px solid rgba(0,0,0,0.2);
+        /* border:1px solid rgba(0,0,0,0.2); */
         margin:0;
         margin-bottom: 15px;
         padding:10px;
         
-        box-shadow: 2px 2px 5px rgba(0,0,0,0.5);;
+      }
+      #columns figure div.avatars{
+        position:relative; 
+        
+        filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.5));
       }
       #columns figure img.badge{
         align-content: flex-end;
         align-items: flex-end;
         align-self:flex-end;
         width:20%;
+        position:absolute; 
+        bottom: 0px;
+        right: 0px;
       }
 
       #columns figure img.avatar {
         width:100%;
+        filter: grayscale(70%);
+      }
+      #columns figure img.avatar_grey{
+        width:100%;
+        filter: grayscale(100%);
+        /* filter: sepia(40%);
+        filter: opacity(70%); */
       }
       
       

@@ -6,6 +6,8 @@ exports.put = Fstore.put;
 exports.get = Fstore.get;
 exports.vote = Fstore.vote;
 exports.bio = Fstore.bio;
+exports.appinstall = Fstore.appinstall;
+
 
 // firebase.functions().useEmulator("localhost", 5001);
 

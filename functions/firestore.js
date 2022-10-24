@@ -54,6 +54,21 @@ module.exports = {
       .then(() => {response.sendStatus(200);});     
 }),
 
+appinstall : functionsRegion.https.onRequest(async (request, response) => {
+
+  const body =request.body;
+  const citiesRef = db.collection('users');
+  const snapshot = await citiesRef.where('phone', '==', body.phoneNum).get();
+  var doc = snapshot.docs[0];
+  // ------------------------------------------------ //
+  const cityRef = db.collection('users').doc(doc.id);
+  
+  var value = body.appinstall=="true"? true: false;//bodyparser 미구현으로 무조건 문자열로만 날아온다. 
+
+  const res = await cityRef.update({appinstall: value})
+  .then(() => {response.sendStatus(200);});     
+}),
+
 
     // get : functions.https.onRequest(async (request, response) => {
     //     const query = request.query;
