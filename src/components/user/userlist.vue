@@ -1,6 +1,9 @@
 <template>
-  <button v-on:click="getview_type()" align="right"> 보기</button>
-  <div style="padding:60px;">
+  
+  <div style="padding-left:60px; padding-right:60px;">
+    <div align="right" >
+      <button v-on:click="getview_type()" align="right"> 보기</button> 
+    </div>
     <!-- <button v-on=""></button>
     <label><input type="checkbox" name="color" value="blue" v-on=""> Blue</label> -->
 
@@ -252,6 +255,13 @@ export default {
 </script>
 
 <style scoped>
+h4{
+  text-align: left;
+  /* display: block; */
+  overflow: hidden;
+  width: 200px;
+  /* border: 1px solid red; */
+}
  #columns{
         column-width:80px;
         /* column-width:350px; */
