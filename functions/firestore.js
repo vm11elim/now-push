@@ -10,21 +10,20 @@ const db = admin.firestore();
 module.exports = {
 
     put : functionsRegion.https.onRequest(async (request, response) => {
-        const query = request.query;  //queryString을 Json형태로 가져온다.  { dfdf: 'aaa' }
-        const body = request.body;   //post로 받은 내용을 Json으로 가져온다.  { dfdf: 'aaa',ㅠㅠㅠㅠ: 'aaa', }
-        
+
+        const body =request.body;
         const data = {
-            phoneNum: query.phoneNum,
-            fcmToken: query.fcmToken
-            // country: 'USA'
+            phoneNum: body.phoneNum,
+            fcmToken: body.fcmToken
           };
-          // Add a new document in collection "cities" with ID 'LA'
           const res = await db.collection('cities').doc().set(data)
           .then(() => {
-            response.send("Added order"+query.phoneNum+"    "+query.fcmToken);
+            // response.status(200);//성공 표시. 
+            response.sendStatus(200);// 왜 200인데도 실패로 나올까. 
+            // response.send("Added order"+body.phoneNum+"    "+body.fcmToken);//설마 이거때문에? 
             // response.send("Added order"+body.phoneNum+"    "+body.fcmToken);
           }, (error) => {
-            response.send("Fail");
+            response.send("Fail-2579");
           });
     }),
 
