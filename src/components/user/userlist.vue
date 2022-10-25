@@ -1,5 +1,4 @@
 <template>
-  
   <div style="padding-left:60px; padding-right:60px;">
     <div align="right" >
       <button v-on:click="getview_type()" align="right"> 보기</button> 
@@ -100,10 +99,10 @@
 
 
     <div v-if="view_type==2">
-      <h4>찬성 : {{this.count.yes}}</h4>
-      <div  id="columns" v-on="this.count.yes=0">
+      <h4>찬성 : {{Object.values(this.people).filter(p=>p.vote_value==1).length}}</h4>
+      <div  id="columns">
       <div v-for="person in people" :key="person.id">
-        <figure v-if="person.vote_value==1" v-on="this.count.yes++">
+        <figure v-if="person.vote_value==1">
           <div class="avatars">
             <img class="badge" :src="badge.bio" v-if="person.bio" align="left"/><!-- 생체 인증있을때만.  -->
             <img :class='person.appinstall? "avatar" : "avatar_grey"' :src="person.avatar" />
@@ -115,10 +114,12 @@
     </div>
 
 
-      <h4>반대 : {{this.count.no}}</h4>
-      <div  id="columns"  v-on="this.count.no=0">
+
+      <h4>반대 : {{Object.values(this.people).filter(p=>p.vote_value!=1).length}}</h4>
+      <div  id="columns">
       <div v-for="person in people" :key="person.id">
-        <figure v-if="person.vote_value!=1"  v-on="this.count.no++" >
+        <figure v-if="person.vote_value!=1"  >
+          <!-- v-on="this.count.no++"  -->
           <div class="avatars">
             <img class="badge" :src="badge.bio" v-if="person.bio" align="left"/><!-- 생체 인증있을때만.  -->
             <img :class='person.appinstall? "avatar" : "avatar_grey"' :src="person.avatar" />
@@ -138,7 +139,6 @@
 import {db} from 'src/main.js'
 import { doc, getDoc, collection, query, where, getDocs, onSnapshot } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-
 import tools from 'src/vm11.js';
 
 
@@ -152,7 +152,8 @@ export default {
   data() {
 
     return {
-      view_type:2,
+      myvalue:"Asdasdad",
+      view_type:0,
       count:{
         yes:0,
         no:0,
@@ -169,6 +170,7 @@ export default {
     };
   },
   mounted:function(){
+
     this.gets();
     // console.log(fixed_value.precepts);
     // this.get("01085429052","2022-10-23") //method1 will execute at pageload
@@ -194,9 +196,13 @@ export default {
       querySnapshot.forEach((doc) => {
             var id = doc.id;
             var user = doc.data();
+
             console.log(user);
+            
+            // return;
             const storage = getStorage();
             var file = tools.formatted_phone(user.phone)+'.png';
+            
             
             getDownloadURL(ref(storage, file))//이미지까지 추가. 
             // getDownloadURL(ref(storage, user.phone+'.png'))//이미지까지 추가. 
@@ -214,6 +220,7 @@ export default {
 
       // 변경될 때 people에 수정됨. 
 
+      
       const q = query(collection(db, "users"));//, where("true", "==", "true"));
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -231,11 +238,7 @@ export default {
             
             
         });
-
-      });
-
-  
-        
+      });      
 
     },
 
