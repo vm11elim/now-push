@@ -18,7 +18,7 @@
     "rewrites": [ 
       {
         "source": "/download/**",
-        "destination": "/download"
+        "destination": "/download/app.apk"
       },
       {
         "source": "**",
