@@ -18,7 +18,12 @@
     "rewrites": [ {
       "source": "**",
       "destination": "/index.html"
-    } ],
+    }, {
+      
+      "source": "/app.apk",
+      "destination": "/app.apk"
+    }],
+
     "public": "dist",
     "ignore": [
       "firebase.json",
