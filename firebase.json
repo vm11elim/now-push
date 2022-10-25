@@ -15,14 +15,16 @@
     }
   ],
   "hosting": {
-    "rewrites": [ {
-      "source": "**",
-      "destination": "/index.html"
-    }, 
-    {
-      "source": "/download/**",
-      "dynamicLinks": true
-    }],
+    "rewrites": [ 
+      {
+        "source": "/download/**",
+        "dynamicLinks": true
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
 
     "public": "dist",
     "ignore": [
