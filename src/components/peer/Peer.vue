@@ -2,7 +2,7 @@
   <h2>{{person.name}}님 안녕하세요.</h2>
     <div style="width:100%; " align="center">
       <div  id="columns" >
-        <figure v-if="person.vote_value!=1"  >
+        <figure>
           <div class="avatars">
             <img class="badge" :src="badge.bio" v-if="person.bio" align="left"/>
             <img :class='person.appinstall? "avatar" : "avatar_grey"' :src="person.avatar" />
@@ -76,28 +76,30 @@ export default {
     },
     async get(phone) {
       
-      //1회 불러오기. people에 추가됨.. 
-      const querySnapshot = await getDocs(collection(db, "users"));
-      querySnapshot.forEach((doc) => {
-            var id = doc.id;
-            var user = doc.data();
+      const citiesRef = db.collection('users');
+const snapshot = await citiesRef.where('phone', '==', phone).get();
 
-            if(user.phone==phone)
+snapshot.forEach(doc => {
+
+            var id = doc.id;
             {
-              this.person = user;
+              var user = doc.data();
+              
               // this.person= this.people[phone];
             // return;
               const storage = getStorage();
-              var file = tools.formatted_phone(this.person.phone)+'.png';
+              var file = tools.formatted_phone(user.phone)+'.png';
               
               
               getDownloadURL(ref(storage, file))//이미지까지 추가. 
               // getDownloadURL(ref(storage, user.phone+'.png'))//이미지까지 추가. 
               .then((url) => {
                 console.log(url);
+                this.person = user;
                 this.person.avatar = url;
               })
               .catch((error) => {
+                this.person = user;
                 this.person.avatar = "https://cdn4.iconfinder.com/data/icons/eon-ecommerce-i-1/32/user_profile_man-256.png";
               });
             }

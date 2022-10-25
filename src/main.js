@@ -24,6 +24,7 @@ export const db = firebase.firestore();
 
 
 
+
 createApp(App).use(router).mount('#app')
 
 // createApp(App).mount('#app')//초기화 끝난후 마운트 시켜야함. 
