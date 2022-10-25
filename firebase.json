@@ -18,7 +18,7 @@
     "rewrites": [ 
       {
         "source": "/download/**",
-        "dynamicLinks": true
+        "destination": "/download"
       },
       {
         "source": "**",
