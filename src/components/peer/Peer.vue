@@ -1,5 +1,6 @@
 <template>
-  <h2>{{person.name}}님 안녕하세요.</h2>
+
+  <h2>{{person.name}}님 안녕하세요.{{$route.params.phone}}</h2>
     <div style="width:100%; " align="center">
       <div  id="columns" >
         <figure>
@@ -76,8 +77,15 @@ export default {
     },
     async get(phone) {
       
-      const citiesRef = db.collection('users');
-const snapshot = await citiesRef.where('phone', '==', phone).get();
+      // const querySnapshot = await getDocs(collection(db, "users"));
+
+      // const citiesRef = db.collection('users');
+      // const citiesRef = collection(db, "users");//db.collection('users');
+      const q = query(collection(db, "users"), where("phone", "==", phone));
+      const snapshot = await getDocs(q);
+
+      // const snapshot = await db.collection('users').where('phone', '==', phone).get();
+// const snapshot = await citiesRef.where('phone', '==', phone).get();
 
 snapshot.forEach(doc => {
 

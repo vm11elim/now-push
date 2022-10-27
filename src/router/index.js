@@ -8,7 +8,11 @@ const routes = [
   {
     path: "/",
     // name: "",
-    component: Home,
+    component: Peer,
+    // component: Home,
+    params: {phone:"010-8542-9052"},
+
+    // props: (route) => ({ phone: route.params.phone ||  })
   },
   {
     path: "/home",
