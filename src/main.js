@@ -14,12 +14,14 @@ import 'firebase/compat/firestore';
 
 //fcm
 import './registerServiceWorker'
+import vueCookies from "vue-cookies";
+
 
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 
-import {getMessaging, getToken} from 'firebase/messaging';
+// import {getMessaging, getToken} from 'firebase/messaging';
 
 
 var firebaseConfig = {
@@ -27,17 +29,16 @@ var firebaseConfig = {
   authDomain: "now-push-5e29e.firebaseapp.com",
   projectId: "now-push-5e29e",
   storageBucket: "now-push-5e29e.appspot.com",
-  messagingSenderId: "484417358729",
-  appId: "1:484417358729:web:3ea1c8fcffd31363cfaf58",
-  measurementId: "G-TSYZ6K5S00"
+  // messagingSenderId: "484417358729",
+  // appId: "1:484417358729:web:3ea1c8fcffd31363cfaf58",
+  // measurementId: "G-TSYZ6K5S00"
 
 };
 const fb_app = initializeApp(firebaseConfig);
 export const db = getFirestore(fb_app);
-const messaging = getMessaging(fb_app);
 
-
-
+// ----------------- 웹 fcm하지마. 애플정책 바뀔때까지. ----------------- //
+// const messaging = getMessaging(fb_app);
 // function requestPermission() {
 //   console.log('Requesting permission...');
 //   Notification.requestPermission().then((permission) => {
@@ -64,11 +65,11 @@ const messaging = getMessaging(fb_app);
     
  
 // requestPermission();
-
+// ------------------------------------------------------- //
 
 
 // export const db = firebase.firestore();
 // export const db = firestore();
-createApp(App).use(router).mount('#app');
+createApp(App).use(vueCookies).use(router).mount('#app');
 
 // createApp(App).mount('#app')//초기화 끝난후 마운트 시켜야함. 

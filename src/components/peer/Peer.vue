@@ -55,8 +55,7 @@ export default {
   },
   mounted:function(){
 
-    
-    
+    this.$cookies.set("phone", this.$route.params.phone);   
     
     this.get(this.$route.params.phone+"");
     // this.get("010-8542-9052");
