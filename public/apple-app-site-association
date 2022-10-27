@@ -1,0 +1,14 @@
+{
+    applinks: {
+        details: [
+            {
+                appIDs: ["R98ZVC8RBD.apple-app-site-association"],
+                components: [
+               		{
+                	/: “*”
+                    }
+                ] 
+            }
+        ]
+    }
+}
