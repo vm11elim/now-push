@@ -1,14 +1,14 @@
-{
-    applinks: {
-        details: [
-            {
-                appIDs: ["R98ZVC8RBD.apple-app-site-association"],
-                components: [
-               		{
-                	/: “*”
-                    }
-                ] 
-            }
-        ]
-    }
-}
+// {
+//     applinks: {
+//         details: [
+//             {
+//                 appIDs: ["R98ZVC8RBD.vm11.elim.nowapp.nowapp-ios"],
+//                 components: [
+//                		{
+//                 	/: “*”
+//                     }
+//                 ] 
+//             }
+//         ]
+//     }
+// }
