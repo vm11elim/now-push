@@ -3,10 +3,9 @@
 
 
   <div style="padding-left:60px; padding-right:60px;">
-    <!-- <div style="height:50px; width: 100%;">
-      <div style="background:red; height:50px; width: 100%;"></div>
-      <div style="background:blue; height:50px; width: 100%;"></div>
-    </div> -->
+    
+    
+
 
     <div align="right" >
       <button v-on:click="getview_type()" align="right"> 보기</button> 
@@ -112,35 +111,54 @@
     
 
     <div v-if="view_type==2">
-      <h4>찬성 : {{Object.values(this.people).filter(p=>p.vote_value==1).length}}</h4>
-      <div  id="columns">
+
+      <div class="flex-container">
+      <!-- <div class="box A" style="flex-grow : {{Object.values(this.people).filter(p=>p.vote_value==1).length}} !important"> -->
+        <div class="box A" style="flex-grow :1 !important">
+        <h4>찬성 : {{Object.values(this.people).filter(p=>p.vote_value==1).length}}</h4>
+          <!-- <div  id="columns">
+            <div v-for="(person) in people" :key="person.id">
+              
+              <transition name="slide-fadeL">
+                <figure v-if="person.vote_value==1">
+                  <div class="avatars">
+                    <img class="badge" :src="badge.bio" v-if="person.bio" align="left"/>
+                    <img :class='person.appinstall? "avatar" : "avatar_grey"' :src="person.avatar" />
+                  </div>
+                  <figtitle>{{person.team}}</figtitle>
+                  <figname >{{person.name}}</figname>
+                </figure>
+              </transition>
+            </div>    
+        </div> -->
+      </div>
+      
+      <!-- <div class="box B" style="flex-grow :4 !important"> -->
+        <div class="box B" style="{{this.getflexgrow('B')}}" >
+        
+        <h4>반대 : {{Object.values(this.people).filter(p=>p.vote_value!=1).length}}</h4>
+      <!-- <div  id="columns">
       <div v-for="person in people" :key="person.id">
-        <figure v-if="person.vote_value==1">
-          <div class="avatars">
-            <img class="badge" :src="badge.bio" v-if="person.bio" align="left"/><!-- 생체 인증있을때만.  -->
-            <img :class='person.appinstall? "avatar" : "avatar_grey"' :src="person.avatar" />
-          </div>
-          <figtitle>{{person.team}}</figtitle>
-          <figname >{{person.name}}</figname>     
-        </figure>
-      </div>    
+        <transition name="slide-fadeR">
+          <figure v-if="person.vote_value!=1 "  >
+            <div class="avatars">
+              <img class="badge" :src="badge.bio" v-if="person.bio" align="left"/>
+              <img :class='person.appinstall? "avatar" : "avatar_grey"' :src="person.avatar" />
+            </div>
+            <figtitle>{{person.team}}</figtitle>
+            <figname >{{person.name}}</figname>     
+          </figure>
+        </transition>
+      </div>     -->
+      <!-- </div> -->
     </div>
 
 
+      
 
-      <h4>반대 : {{Object.values(this.people).filter(p=>p.vote_value!=1).length}}</h4>
-      <div  id="columns">
-      <div v-for="person in people" :key="person.id">
-        <figure v-if="person.vote_value!=1"  >
-          <!-- v-on="this.count.no++"  -->
-          <div class="avatars">
-            <img class="badge" :src="badge.bio" v-if="person.bio" align="left"/><!-- 생체 인증있을때만.  -->
-            <img :class='person.appinstall? "avatar" : "avatar_grey"' :src="person.avatar" />
-          </div>
-          <figtitle>{{person.team}}</figtitle>
-          <figname >{{person.name}}</figname>     
-        </figure>
-      </div>    
+
+
+      
     </div>  
 
     </div>
@@ -161,7 +179,7 @@
 import {db} from 'src/main.js'
 import { doc, getDoc, collection, query, where, getDocs, onSnapshot } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import tools from 'src/vm11.js';
+import vm11 from 'src/vm11_javascripts/vm11.js';
 
 
 
@@ -174,6 +192,7 @@ export default {
   data() {
 
     return {
+      show: true,
       myvalue:"Asdasdad",
       view_type:0,
       count:{
@@ -191,13 +210,30 @@ export default {
       people:{},
     };
   },
+  created:function(){
+
+  this.gets();
+  // console.log(fixed_value.precepts);
+  // this.get("01085429052","2022-10-23") //method1 will execute at pageload
+  },
+
   mounted:function(){
 
-    this.gets();
+    // this.gets();
     // console.log(fixed_value.precepts);
     // this.get("01085429052","2022-10-23") //method1 will execute at pageload
   },
   methods: {
+    getflexgrow(B)
+    {
+      if(B=="A")
+        return "flex-grow : 1 !important";
+      if(B=="B")
+        return "flex-grow : 3 !important";
+
+      // var a = Object.values(this.people).filter(p=>p.vote_value==1).length
+      // var b = Object.values(this.people).filter(p=>p.vote_value!=1).length
+    },
     getview_type()
     {
       this.view_type++;
@@ -223,7 +259,7 @@ export default {
             
             // return;
             const storage = getStorage();
-            var file = tools.formatted_phone(user.phone)+'.png';
+            var file = vm11.tools.formatted_phone(user.phone)+'.png';
             
             
             getDownloadURL(ref(storage, file))//이미지까지 추가. 
@@ -280,6 +316,73 @@ export default {
 </script>
 
 <style scoped>
+
+
+/* ------------------------- flex container ------------------------- */
+.flex-container {
+  display : flex; 
+  height: 100%;
+}
+.box {
+  height : 100%; 
+  /* margin : 5px; */
+  padding: 5px;
+  /* flex-grow : 27;  */
+  /* max-width: 50%; */
+  max-width: 90%;
+  /* width: 100%; */
+}
+.A{
+  
+  background :rgba(243, 163, 181, 0.501);
+}
+.B
+{
+  background :rgba(208, 227, 248, 0.422);
+}
+
+/* ------------------------- animation ------------------------- */
+
+.slide-fadeR-enter-active {
+  transition: all 0.8s ease-out;
+}
+
+.slide-fadeR-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fadeR-enter-from 
+{
+  transform: translateX(-50px);
+  opacity: 0;
+}
+.slide-fadeR-leave-to {
+  /* transform: translateX(20px); */
+  transform: translateX(-50px);
+  opacity: 0;
+}
+
+.slide-fadeL-enter-active {
+  transition: all 0.8s ease-out;
+}
+
+.slide-fadeL-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fadeL-enter-from 
+{
+  transform: translateX(50px);
+  opacity: 0;
+}
+.slide-fadeL-leave-to {
+  /* transform: translateX(20px); */
+  transform: translateX(50px);
+  opacity: 0;
+}
+
+/* ------------------------- figure ------------------------- */
+
 h4{
   text-align: left;
   /* display: block; */

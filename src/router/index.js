@@ -8,9 +8,9 @@ const routes = [
   {
     path: "/",
     // name: "",
-    component: Peer,
-    // component: Home,
-    params: {phone:"010-8542-9052"},
+    // component: Peer,
+    component: Home,
+    // params: {phone:"010-8542-9052"},
 
     // props: (route) => ({ phone: route.params.phone ||  })
   },
