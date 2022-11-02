@@ -13,6 +13,26 @@
     <!-- <button v-on=""></button>
     <label><input type="checkbox" name="color" value="blue" v-on=""> Blue</label> -->
 
+    <div id="columns"  v-if="view_type==4">
+      <figure v-for="person in people" :key="person.id">
+        
+        <div class="avatars">
+          <img class="badge" :src="badge.bio" v-if="person.bio" align="left"/><!-- 생체 인증있을때만.  -->
+          <!-- <img class="avatar" :src="person.avatar" /> -->
+          <img :class='person.appinstall? "avatar" : "avatar_grey"' :src="person.avatar" />
+          <img class="badge" :src="person.vote_value==1 ? badge.yes: badge.no" align="right"/>
+        </div>
+        <figtitle>{{person.team}}</figtitle>
+        <figname >{{person.name}}</figname>      
+        <div v-for="n in person.count">
+          ㅁ
+        <!-- {{n}} -->
+        </div>
+        <!-- <div >{{person.count}}</div>            -->
+      </figure>    
+    </div>
+
+
     <div v-if="view_type==0">
       <div  id="columns" >
         <h4>UC서비스팀</h4>
@@ -27,7 +47,7 @@
         </div> 
       </div>
 
-      <div  id="columns" >
+      <!-- <div  id="columns" >
         <h4>경영지원팀</h4>
         <div v-for="person in people" :key="person.id">
           <figure v-if="(person.team ==='경영지원팀')">
@@ -38,9 +58,9 @@
             <figname >{{person.name}}</figname>     
           </figure>
         </div> 
-      </div>
+      </div> -->
 
-      <div  id="columns" >
+      <!-- <div  id="columns" >
         <h4>정보보안사업팀</h4>
         <div v-for="person in people" :key="person.id">
           <figure v-if="(person.team ==='정보보안사업팀')">
@@ -51,7 +71,7 @@
             <figname >{{person.name}}</figname>     
           </figure>
         </div> 
-      </div>
+      </div> -->
 
       <div  id="columns" >
       <h4>개발팀</h4>
@@ -66,7 +86,7 @@
         </div>    
       </div>
 
-      <div  id="columns" >
+      <!-- <div  id="columns" >
         <h4>UC솔루션팀</h4>
         <div v-for="person in people" :key="person.id">
           <figure v-if="(person.team ==='UC솔루션팀')">
@@ -75,7 +95,7 @@
             <figname >{{person.name}}</figname>     
           </figure>
         </div> 
-      </div>
+      </div> -->
 
       <div  id="columns" >
         <h4>서베이팀</h4>
@@ -194,7 +214,7 @@ export default {
     return {
       show: true,
       myvalue:"Asdasdad",
-      view_type:0,
+      view_type:4,
       count:{
         yes:0,
         no:0,
@@ -237,7 +257,7 @@ export default {
     getview_type()
     {
       this.view_type++;
-      if(this.view_type==3)
+      if(this.view_type>4)
         this.view_type=0;
     },
     // getImgUrl() {
@@ -288,6 +308,7 @@ export default {
           person.vote_value = edited.vote_value;
           person.bio = edited.bio;
           person.appinstall = edited.appinstall;
+          person.count = edited.count;
           
           //1) 1회불러오기  => 업데이트event] + avatar 이미지 로딩 + 값 갱신. 
           //2) 1회불러오기+ avatar 이미지 로딩 => 업데이트event] 값 갱신.  2번 방식임. 

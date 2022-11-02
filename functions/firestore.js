@@ -39,6 +39,34 @@ module.exports = {
         .then(() => {response.sendStatus(200);});     
   }),
 
+
+  count_plus : functionsRegion.https.onRequest(async (request, response) => {
+
+      const body =request.body;
+        const citiesRef = db.collection('users');
+        const snapshot = await citiesRef.where('phone', '==', body.phoneNum).get();
+        var doc = snapshot.docs[0];
+        // ------------------------------------------------ //
+        const cityRef = db.collection('users').doc(doc.id);
+        const res = await cityRef.update({
+          count: admin.firestore.FieldValue.increment(1)
+        })
+        .then(() => {response.sendStatus(200);});     
+  }),
+  count_minus : functionsRegion.https.onRequest(async (request, response) => {
+
+    const body =request.body;
+      const citiesRef = db.collection('users');
+      const snapshot = await citiesRef.where('phone', '==', body.phoneNum).get();
+      var doc = snapshot.docs[0];
+      // ------------------------------------------------ //
+      const cityRef = db.collection('users').doc(doc.id);
+      const res = await cityRef.update({
+        count: admin.firestore.FieldValue.increment(-1)
+      })
+      .then(() => {response.sendStatus(200);});     
+}),
+
   bio : functionsRegion.https.onRequest(async (request, response) => {
 
       const body =request.body;
