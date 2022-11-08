@@ -22,7 +22,7 @@
 import {db} from 'src/main.js'
 import { doc, getDoc, collection, query, where, getDocs, onSnapshot } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import tools from 'src/vm11_javascripts/vm11.js';
+import vm11 from 'src/vm11_javascripts/vm11.js';
 // import router from '@/router';
 
 
@@ -95,7 +95,7 @@ snapshot.forEach(doc => {
               // this.person= this.people[phone];
             // return;
               const storage = getStorage();
-              var file = tools.formatted_phone(user.phone)+'.png';
+              var file = vm11.tools.formatted_phone(user.phone)+'.png';
               
               
               getDownloadURL(ref(storage, file))//이미지까지 추가. 

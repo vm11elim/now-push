@@ -13,6 +13,7 @@ export default {
   mounted:function(){
     if(!false)
       this.INITIAL();
+
     // console.log(fixed_value.precepts);
     // this.get("01085429052","2022-10-23") //method1 will execute at pageload
   },
@@ -21,10 +22,12 @@ export default {
       
       // const user1 = ;
       // await setDoc(doc(collection(db, "users")), {name: "김건엽",phone: "01085429052",title: "매니저",pic:"", appinstall: false,bio:false, vote_value:1, agree:true});
-      await setDoc(doc(collection(db, "users")), {team: "개발팀", name: "김건엽",phone: "010-8542-9052",appinstall: false,bio:false, vote_value:1,count:0, agree:true});
-      await setDoc(doc(collection(db, "users")), {team: "개발팀", name: "김건엽2",phone: "010-2596-3844",appinstall: false,bio:false, vote_value:1,count:0, agree:true});
-      await setDoc(doc(collection(db, "users")), {team: "개발팀", name: "김건엽3",phone: "010-2579-3844",appinstall: false,bio:false, vote_value:2,count:0, agree:true});
+      await setDoc(doc(collection(db, "users2")), {team: "개발팀", name: "김건엽",phone: "010-8542-9052",appinstall: false,bio:false, vote_value:1,count:0, agree:true});
+      await setDoc(doc(collection(db, "users2")), {team: "개발팀", name: "김건엽2",phone: "010-2596-3844",appinstall: false,bio:false, vote_value:1,count:0, agree:true});
+      await setDoc(doc(collection(db, "users2")), {team: "개발팀", name: "김건엽3",phone: "010-2579-3844",appinstall: false,bio:false, vote_value:2,count:0, agree:true});
       
+      if(true)
+        return;
       await setDoc(doc(collection(db, "users")), {team: "UC서비스팀", name: "기한석",phone: "010-9984-5518",appinstall: false,bio:false, vote_value:1,count:0, agree:true});
       await setDoc(doc(collection(db, "users")), {team: "UC서비스팀", name: "김호성",phone: "010-2839-7430",appinstall: false,bio:false, vote_value:1,count:0, agree:true});
       await setDoc(doc(collection(db, "users")), {team: "UC서비스팀", name: "김동환",phone: "010-5259-9656",appinstall: false,bio:false, vote_value:1,count:0, agree:true});
