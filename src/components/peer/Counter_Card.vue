@@ -15,9 +15,9 @@
         </div>
 
         <div class="inV flexH debug1" style="justify-content: space-evenly; width: 100px;" >
-          <div class="inH flexH debug2" >+</div>
+          <!-- <div class="inH flexH debug2" >+</div> -->
           <div class="inH flexH debug2" style="flex-grow:3; font-size:2em;" >{{cnt}}</div>
-          <div class="inH flexH debug2" >-</div>
+          <!-- <div class="inH flexH debug2" >-</div> -->
         </div>
       </div>
   <!-- </longclicker> -->

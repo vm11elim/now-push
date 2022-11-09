@@ -1,21 +1,30 @@
 <template>
   <h2>님 안녕하세요.{{ $route.params.phone }}</h2>
+  
+  <!-- <Toaster  v-if="Toaster_vis" :txt="this.Toaster_msg"/> -->
+  <Toaster v-if="Toaster_vis" :txt="this.Toaster_msg" @dismiss="this.Toaster_vis=false"/>
   <div v-for="(item, i) in list" :key="i">
     <!-- <div @longclick="console.log('b')">asd</div> -->
-
     <!-- <Counter_Card :txt=item.txt :cnt=item.cnt ></Counter_Card> -->
+    
+    
     <Counter_Card
       :txt="item.txt"
       :cnt="item.cnt"
-      @plus="item.cnt++; "
-      @minus="item.cnt--; this.vibrate()"
+      @plus="item.cnt++;  this.do_toast(item.txt+'  증가함.');"
+      @minus="item.cnt--; this.do_toast(item.txt+'  감소함.');"
     ></Counter_Card>
+
   </div>
+
   <!-- height, width는 개별 지정이 맞다. 일괄 지정하는 게 맞다.  -->
 </template>
   
 <script>
 import Counter_Card from "./Counter_Card.vue";
+
+import Toaster from 'src/Tools/MyToaster.vue';
+
 
 navigator.vibrate =
   navigator.vibrate ||
@@ -27,6 +36,8 @@ export default {
   name: "App",
   data() {
     return {
+      Toaster_vis:false,
+      Toaster_msg:"this is toast msg..",
       list: [
         { txt: "abcd13", cnt: 5 },
         { txt: "ermer", cnt: 0 },
@@ -39,22 +50,25 @@ export default {
   },
   methods: {
     vibrate() {
-      // console.log("vibrate");
-      if (navigator.vibrate) {
-        navigator.vibrate(1000); // 진동을 울리게 한다. 1000ms = 1초
-      } else {
-        alert("진동을 지원하지 않는 기종 입니다.");
-      }
+      alert('-1!');
+      // // console.log("vibrate");
+      // if (navigator.vibrate) {
+      //   navigator.vibrate(1000); // 진동을 울리게 한다. 1000ms = 1초
+      // } else {
+      //   alert("진동을 지원하지 않는 기종 입니다.");
+      // }
     },
     // doplus() {
     //   console.log("plus");
     // },
-    // dominus() {
-    //   console.log("minus");
-    //   this.vibrate();
-    // },
+    do_toast(msg) {
+      this.Toaster_vis = true;
+      this.Toaster_msg = msg;//"-1!";
+    },
   },
-  components: { Counter_Card },
+  components: { Counter_Card,
+     Toaster 
+    },
 };
 </script>
   
