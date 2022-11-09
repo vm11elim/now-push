@@ -6,7 +6,7 @@
       <!-- <div class="flexV debug0" style="justify-content:space-between;  height: 150px;" @touchstart="mousedown" @touchend="mouseup" @mousedown="mousedown" @mouseup="mouseup"> -->
         <!-- <div class="flexV debug0" style="justify-content:space-between;  height: 150px;" @mousedown="mousedown" @mouseup="mouseup"> -->
       
-        <img class="inV" style="aspect-ratio:0.5;" src ="https://cdn4.iconfinder.com/data/icons/aami-web-internet/64/aami14-40-128.png" />
+        <img class="inV" style="aspect-ratio:0.2;" src ="https://cdn4.iconfinder.com/data/icons/aami-web-internet/64/aami14-40-128.png" />
         
         <div class="inV flexH" >
           <div>{{txt}}</div>
@@ -41,14 +41,17 @@ export default {
   methods:{
     mousedown() {
       // console.log("a");
-      this.longTouchToggle = true;
-      setTimeout(() => {
-        if (this.longTouchToggle) {
-          // this.cnt=99;
-          this.longTouchToggle = false;
-          this.$emit('minus','myvalue')
-        }
-      }, 1000);
+      if(!this.longTouchToggle)
+      {
+        this.longTouchToggle = true;
+        setTimeout(() => {
+          if (this.longTouchToggle) {
+            // this.cnt=99;
+            this.$emit('minus','myvalue')
+            this.longTouchToggle = false;
+          }
+        }, 1000);
+      }
     },
 
     mouseup() {
