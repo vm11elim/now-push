@@ -2,8 +2,9 @@
     <!-- <div @longclick="console.log('b')">asd</div> -->
     
     <!-- <longclicker @onlongclick="cnt--"> -->
-      <div class="flexV debug0" style="justify-content:space-between;  height: 150px;" @mousedown="mousedown" @mouseup="mouseup">
-      <!-- <div class="flexV debug0" style="justify-content:space-between;  height: 150px;" @click="cnt++" @mousedown="mousedown" @mouseup="mouseup"> -->
+      <div class="flexV debug0" style="justify-content:space-between;  height: 150px;" @touchstart="mousedown" @touchend="mouseup" @mousedown="mousedown" @mouseup="mouseup">
+        <!-- <div class="flexV debug0" style="justify-content:space-between;  height: 150px;" @mousedown="mousedown" @mouseup="mouseup"> -->
+      
         <img class="inV" src ="https://cdn4.iconfinder.com/data/icons/aami-web-internet/64/aami14-40-512.png" />
         
         <div class="inV flexH" >
