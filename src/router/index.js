@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from "src/components/Home.vue";
 import Peer from "src/components/peer/Peer.vue";
-import Counter from "src/components/peer/Counter.vue";
+import Counters from "src/components/peer/Counters.vue";
 // import About from "src/components/About.vue";
 
 const routes = [
@@ -27,7 +27,7 @@ const routes = [
 
   {
     path: "/peer/:phone/counter",
-    component: Counter,
+    component: Counters,
   },
   // {
   //   path: "/counter/:phone",
