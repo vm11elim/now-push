@@ -9,9 +9,9 @@
         <img class="inV" style="aspect-ratio:0.2;" src ="https://cdn4.iconfinder.com/data/icons/aami-web-internet/64/aami14-40-128.png" />
         
         <div class="inV flexH" >
-          <div>{{txt}}</div>
-          <div>{{txt}}</div>
-          <div>{{txt}}</div>
+          <div style="user-select: none;">{{txt}}</div>
+          <div style="user-select: none;">{{txt}}</div>
+          <div style="user-select: none;">{{txt}}</div>
         </div>
 
         <div class="inV flexH debug1" style="justify-content: space-evenly; width: 100px;" >
@@ -36,6 +36,7 @@ export default {
   },
   data() {
     return {
+      longclick_timeout : {},
     };
   },
   methods:{
@@ -44,19 +45,21 @@ export default {
       if(!this.longTouchToggle)
       {
         this.longTouchToggle = true;
-        setTimeout(() => {
+        this.longclick_timeout = setTimeout(() => {
           if (this.longTouchToggle) {
             // this.cnt=99;
             this.$emit('minus','myvalue')
             this.longTouchToggle = false;
           }
-        }, 1000);
+        }, 600);
       }
     },
 
     mouseup() {
       if(this.longTouchToggle)
       {
+        if(this.longclick_timeout != null)
+        clearTimeout(this.longclick_timeout);
         this.longTouchToggle = false;
         this.$emit('plus','myvalue')
       }

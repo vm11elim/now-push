@@ -12,7 +12,7 @@
       :txt="item.txt"
       :cnt="item.cnt"
       @plus="item.cnt++;  this.do_toast(item.txt+'  증가함.');"
-      @minus="item.cnt--; this.do_toast(item.txt+'  감소함.');"
+      @minus="if(item.cnt!=0){item.cnt--; this.do_toast(item.txt+'  감소함.');}"
     ></Counter_Card>
 
   </div>

@@ -54,14 +54,8 @@ methods: {
   backdrop-filter: blur(5px);
 
 
-  /* opacity: 0; */
-  transition: all 3s;
-  transition-delay: 1s; /* 시작 전 딜레이 */
-  transition-duration: 0.5s; /* transition 작동 속도 */
-  transition-property: opacity; /* 어떤 속성에 transition 입힐건지 */
-  transition-timing-function: ease-in; /* 동작 속도 그래프조정 */
-
-
+  opacity: 0.8;
+  transition: opacity 1s;
 }
 /* .start
 {
