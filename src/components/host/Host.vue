@@ -10,9 +10,9 @@
     </div>
     
 
-    <Department v-if="view_type==0"/>
-    <YesNo v-if="view_type==1"/>
-    <Prefs v-if="view_type==2"/>
+    <Department :people="this.people" v-if="view_type==0"/>
+    <YesNo :people="this.people" v-if="view_type==1"/>
+    <Prefs :people="this.people" v-if="view_type==2"/>
 
   </div>
     
@@ -158,29 +158,6 @@ export default {
 <style scoped>
 
 
-/* ------------------------- flex container ------------------------- */
-.flex-container {
-  display : flex; 
-  height: 100%;
-}
-.box {
-  height : 100%; 
-  /* margin : 5px; */
-  padding: 5px;
-  /* flex-grow : 27;  */
-  /* max-width: 50%; */
-  max-width: 90%;
-  /* width: 100%; */
-}
-.A{
-  
-  background :rgba(243, 163, 181, 0.501);
-}
-.B
-{
-  background :rgba(208, 227, 248, 0.422);
-}
-
 /* ------------------------- animation ------------------------- */
 
 .slide-fadeR-enter-active {
@@ -221,96 +198,4 @@ export default {
   opacity: 0;
 }
 
-/* ------------------------- figure ------------------------- */
-
-h4{
-  text-align: left;
-  /* display: block; */
-  overflow: hidden;
-  width: 200px;
-  /* border: 1px solid red; */
-}
- #columns{
-        column-width:80px;
-        /* column-width:350px; */
-        /* column-gap: 15px; */
-      }
-      #columns figure{
-        display: inline-block;
-        /* border:1px solid rgba(0,0,0,0.2); */
-        margin:0;
-        margin-bottom: 15px;
-        padding:10px;
-        
-      }
-      #columns figure div.avatars{
-        position:relative; 
-        
-        filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.5));
-      }
-      #columns figure img.badge{
-        align-content: flex-end;
-        align-items: flex-end;
-        align-self:flex-end;
-        width:20%;
-        position:absolute; 
-        bottom: 0px;
-        right: 0px;
-      }
-
-      #columns figure img.avatar {
-        width:100%;
-        
-        filter: grayscale(20%);
-        
-      }
-      #columns figure img.avatar_grey{
-        width:100%;
-
-        
-        filter: 
-            grayscale(70%)
-            /* drop-shadow(2px 2px 5px rgba(243, 122, 29, 0.904)) */
-            ;
-        
-        
-        /* filter: grayscale(100%); */
-
-
-        /* filter: sepia(40%);
-        filter: opacity(70%); */
-      }
-      
-      
-
-      
-      
-      #columns figure figtitle{
-        display: block;
-        font-size:xx-small;
-        text-overflow: none;
-        
-        display: inline-block;
-        /* white-space: pre; */
-        overflow: hidden;
-
-        /* border: 1px solid blue; */
-        
-        height:min-content;
-        padding:0px !important;
-        margin: 0px !important;
-      }
-      #columns figure figname{
-        font-size:small;
-        
-        display:block;
-        text-overflow: none;
-
-        /* border: 1px solid red; */
-
-        height:min-content;
-        padding:0px !important;
-        margin: 0px !important;
-      }
-      
 </style>

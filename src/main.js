@@ -76,9 +76,12 @@ const longClickInstance = longClickDirective({delay: 400, interval: 50})
 // export const db = firebase.firestore();
 // export const db = firestore();
 // createApp(App).use(vueCookies).use(router).mount('#app');
-createApp(App).directive('longclick', longClickInstance).use(vueCookies).use(router).mount('#app');
-
 // createApp(App).directive('longclick', longClickInstance).use(vueCookies).use(router).mount('#app');
+// import VueHead from 'vue-head'
+
+// createApp(App).directive('longclick', longClickInstance).use(VueHead).use(vueCookies).use(router).mount('#app');
+
+createApp(App).directive('longclick', longClickInstance).use(vueCookies).use(router).mount('#app');
 
 
 // createApp(App).mount('#app')//초기화 끝난후 마운트 시켜야함. 

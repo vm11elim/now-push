@@ -1,5 +1,5 @@
 <template>
-    <Groups :Group_titles=this.Group_title :Group_DATA=this.Group_data />
+  <Groups :Group_titles="this.Group_title" :Group_DATA="this.Group_data" />
 </template>
 
 <script>
@@ -8,6 +8,10 @@ import Groups from "src/components/host/Groups.vue";
 export default {
   name: "App",
 
+  props:
+  {
+    people: Object,
+  },
   components: {
     Groups,
   },
@@ -18,8 +22,30 @@ export default {
     };
   },
   created() {
-    this.Group_title=['찬성', '반대'];
-    this.Group_data = [this.listmaker(18),this.listmaker(18)];
+    // <h4>찬성 : {{}}</h4>
+
+
+    this.Group_title = ["좋좋", "좋음", "중립","나쁨","쁨쁨"];
+
+    
+    var peoples = [
+      Object.values(this.people).filter((p) => p.vote_value == 1),
+      Object.values(this.people).filter((p) => p.vote_value == 2),
+      Object.values(this.people).filter((p) => p.vote_value == 2),
+      Object.values(this.people).filter((p) => p.vote_value == 2),
+      Object.values(this.people).filter((p) => p.vote_value == 2)
+    ];
+    this.Group_data = [
+      this.listmaker2(peoples[0]),
+      this.listmaker2(peoples[1]),
+      this.listmaker2(peoples[2]),
+      this.listmaker2(peoples[3]),
+      this.listmaker2(peoples[4]),
+    ];
+
+    // this.Group_data
+    // console.log(this.Group_data[0]);
+    // this.Group_data = [this.listmaker(18),this.listmaker(18)];
   },
   methods: {
     listmaker(n) {
@@ -27,7 +53,18 @@ export default {
       for (var i = 0; i < n; i++) {
         var myObj = new Object();
         myObj.name = "기름임" + i;
-        myObj["img"] = "https://cdn3.iconfinder.com/data/icons/web-and-mobile-colored-icons-vol-1/128/27-32.png";
+        myObj["img"] =
+          "https://cdn3.iconfinder.com/data/icons/web-and-mobile-colored-icons-vol-1/128/27-32.png";
+        list2.push(myObj);
+      }
+      return list2;
+    },
+    listmaker2(arr) {
+      var list2 = [];
+      for (var i = 0; i < arr.length; i++) {
+        var myObj = new Object();
+        myObj.name = arr[i].name;
+        myObj["img"] =arr[i].avatar;// "https://cdn3.iconfinder.com/data/icons/web-and-mobile-colored-icons-vol-1/128/27-32.png";
         list2.push(myObj);
       }
       return list2;
