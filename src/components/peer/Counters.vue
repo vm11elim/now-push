@@ -5,9 +5,7 @@
   <Toaster v-if="Toaster_vis" :txt="this.Toaster_msg" @dismiss="this.Toaster_vis=false"/>
   <div v-for="(item, i) in list" :key="i">
     <!-- <div @longclick="console.log('b')">asd</div> -->
-    <!-- <Counter_Card :txt=item.txt :cnt=item.cnt ></Counter_Card> -->
-    
-    
+    <!-- <Counter_Card :txt=item.txt :cnt=item.cnt ></Counter_Card> -->    
     <Counter_Card
       :txt="item.txt"
       :cnt="item.cnt"
@@ -22,15 +20,10 @@
   
 <script>
 import Counter_Card from "./Counter_Card.vue";
-
 import Toaster from 'src/Tools/MyToaster.vue';
+import vm11 from 'src/vm11/javascripts/vm11.js';
 
 
-navigator.vibrate =
-  navigator.vibrate ||
-  navigator.webkitVibrate ||
-  navigator.mozVibrate ||
-  navigator.msVibrate;
 
 export default {
   name: "App",
@@ -49,19 +42,8 @@ export default {
     };
   },
   methods: {
-    vibrate() {
-      alert('-1!');
-      // // console.log("vibrate");
-      // if (navigator.vibrate) {
-      //   navigator.vibrate(1000); // 진동을 울리게 한다. 1000ms = 1초
-      // } else {
-      //   alert("진동을 지원하지 않는 기종 입니다.");
-      // }
-    },
-    // doplus() {
-    //   console.log("plus");
-    // },
     do_toast(msg) {
+      if(false)vm11.tools.vibrate(300);
       this.Toaster_vis = true;
       this.Toaster_msg = msg;//"-1!";
     },

@@ -14,7 +14,7 @@
 
 <script>
 
-import vm11 from 'src/vm11_javascripts/vm11.js';
+import vm11 from 'src/vm11/javascripts/vm11.js';
 
 
 export default {

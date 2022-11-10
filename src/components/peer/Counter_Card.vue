@@ -9,14 +9,14 @@
         <img class="inV" style="aspect-ratio:0.2;" src ="https://cdn4.iconfinder.com/data/icons/aami-web-internet/64/aami14-40-128.png" />
         
         <div class="inV flexH" >
-          <div style="user-select: none;">{{txt}}</div>
-          <div style="user-select: none;">{{txt}}</div>
-          <div style="user-select: none;">{{txt}}</div>
+          <div class="none_select">{{txt}}</div>
+          <div class="none_select">{{txt}}</div>
+          <div class="none_select">{{txt}}</div>
         </div>
 
         <div class="inV flexH debug1" style="justify-content: space-evenly; width: 100px;" >
           <!-- <div class="inH flexH debug2" >+</div> -->
-          <div class="inH flexH debug2" style="flex-grow:3; font-size:2em;" >{{cnt}}</div>
+          <div class="inH flexH debug2 none_select" style="flex-grow:3; font-size:2em;" >{{cnt}}</div>
           <!-- <div class="inH flexH debug2" >-</div> -->
         </div>
       </div>
@@ -107,6 +107,11 @@ export default {
 .debug2
 {
   border: 1px solid red;
+}
+
+.none_select
+{
+  user-select: none;
 }
 
 </style>
