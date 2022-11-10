@@ -1,0 +1,25 @@
+.flexH
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.flexV
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.inV
+{
+  flex-grow: 1;
+  height: 100%;
+}
+.inH
+{
+  flex-grow: 1;
+  width: 100%;
+}
+

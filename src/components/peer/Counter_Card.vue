@@ -6,7 +6,7 @@
       <!-- <div class="flexV debug0" style="justify-content:space-between;  height: 150px;" @touchstart="mousedown" @touchend="mouseup" @mousedown="mousedown" @mouseup="mouseup"> -->
         <!-- <div class="flexV debug0" style="justify-content:space-between;  height: 150px;" @mousedown="mousedown" @mouseup="mouseup"> -->
       
-        <img class="inV" style="aspect-ratio:0.2;" src ="https://cdn4.iconfinder.com/data/icons/aami-web-internet/64/aami14-40-128.png" />
+        <img class="inV none_select" style="aspect-ratio:0.2;" src ="https://cdn4.iconfinder.com/data/icons/aami-web-internet/64/aami14-40-128.png" />
         
         <div class="inV flexH" >
           <div class="none_select">{{txt}}</div>
@@ -70,49 +70,8 @@ export default {
 </script>
   
 <style>
-
-.flexH
-{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.flexV
-{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-}
-.inV
-{
-  flex-grow: 1;
-  height: 100%;
-}
-.inH
-{
-  flex-grow: 1;
-  width: 100%;
-}
-
-.debug0
-{
-  border: 1px solid gray;
-}
-.debug1
-{
-  border: 1px solid blue;
-}
-.debug2
-{
-  border: 1px solid red;
-}
-
-.none_select
-{
-  user-select: none;
-}
+@import 'src/vm11/css/myFlex.css';
+@import 'src/vm11/css/tools.css';
 
 </style>
   

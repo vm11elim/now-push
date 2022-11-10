@@ -1,0 +1,18 @@
+.debug0
+{
+  border: 1px solid gray;
+}
+.debug1
+{
+  border: 1px solid blue;
+}
+.debug2
+{
+  border: 1px solid red;
+}
+
+.none_select
+{
+  user-select: none;
+  /* -webkit-user-drag: none; */
+}
