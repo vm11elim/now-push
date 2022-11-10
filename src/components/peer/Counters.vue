@@ -20,7 +20,7 @@
   
 <script>
 import Counter_Card from "./Counter_Card.vue";
-import Toaster from 'src/Tools/MyToaster.vue';
+import Toaster from 'src/vm11/vue_comp/MyToaster.vue';
 import vm11 from 'src/vm11/javascripts/vm11.js';
 
 
@@ -55,35 +55,7 @@ export default {
 </script>
   
 <style>
-.flexH {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.flexV {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-}
-.inV {
-  flex-grow: 1;
-  height: 100%;
-}
-.inH {
-  flex-grow: 1;
-  width: 100%;
-}
-
-.debug0 {
-  border: 1px solid gray;
-}
-.debug1 {
-  border: 1px solid blue;
-}
-.debug2 {
-  border: 1px solid red;
-}
+@import 'src/vm11/css/myFlex.css';
+@import 'src/vm11/css/tools.css';
 </style>
   

@@ -1,17 +1,17 @@
 <template>
   <!-- <div></div> -->
-  <all :list='this.list'/>
+  <avatar_viewer :list='this.list'/>
 </template>
 
 <script>
-import all from 'src/components/Avatars/all.vue'
+import avatar_viewer from 'src/components/common/Avatars/avatar_viewer.vue'
 
 
 export default {
   name: 'App',
   
   components: {
-    all
+    avatar_viewer
   },
   data() {
     return {
@@ -20,7 +20,7 @@ export default {
     }
   },
   created() {
-    this.list = this.listmaker(7);
+    this.list = this.listmaker(20);
   },
   methods:
   {

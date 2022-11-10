@@ -1,12 +1,12 @@
 <template>
-  <div class="region_out" :style="{width:'50vw',height:'20vh', backgroundColor: 'red'}">
+  <div class="region_out" >
     <div ref="region" class="region">
       <div v-for="(p, i) in list" :key="p.id" >
-        <div  :ref="(el) => {this.cards[i] = el }" class="card" ></div>
-        <!-- <div  :ref="(el) => {this.cards[i] = el }" class="card" >
+        <!-- <div  :ref="(el) => {this.cards[i] = el }" class="card" ></div> -->
+        <div  :ref="(el) => {this.cards[i] = el }" class="card" >
           <img :class="avatar" :src="p.img" />
           <div>{{p.name}}</div>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
@@ -86,7 +86,7 @@ export default {
 {
   /* width: 100px;
   height: 100px; */
-  background-color: black;
+  /* background-color: black; */
 }
 .avatar
 {

@@ -1,14 +1,14 @@
-<template>
+<!-- <template>
   <TestDebug v-if="isDebug"/>
   <div v-if="!isDebug">
     <userlist msg="유저목록임."/>
-    <!-- <initialDB/> -->
+    
   </div>
 </template>
 
 <script>
-import userlist from './user/userlist.vue'
-import initialDB from './user/initialDB.vue'
+import userlist from './host/userlist.vue'
+import initialDB from './common/user/initialDB.vue'
 import TestDebug from './TestDebug/TestDebug.vue'
 
 export default {
@@ -35,4 +35,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-</style>
+</style> -->
+
+
+<!-- <initialDB/> -->
