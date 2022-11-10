@@ -44,7 +44,7 @@ methods: {
 }
 #in
 {
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(255,255,255,0.9);
   border-radius: 5px;
   padding: 5px;
   padding-left: 15px;
@@ -54,7 +54,7 @@ methods: {
   backdrop-filter: blur(5px);
 
 
-  opacity: 0.8;
+  /* opacity: 0.8; */
   transition: opacity 1s;
 }
 /* .start

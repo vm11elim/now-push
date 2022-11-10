@@ -23,3 +23,20 @@
   width: 100%;
 }
 
+.p10
+{
+  padding:10px !important;
+}
+.m10
+{
+  margin:10px !important;
+}
+
+.p30
+{
+  padding:30px !important;
+}
+.m30
+{
+  margin:30px !important;
+}
