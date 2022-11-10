@@ -4,8 +4,8 @@
       <div v-for="(p, i) in list" :key="p.id" >
         <!-- <div  :ref="(el) => {this.cards[i] = el }" class="card" ></div> -->
         <div  :ref="(el) => {this.cards[i] = el }" class="card" >
-          <img :class="avatar" :src="p.img" />
-          <div>{{p.name}}</div>
+          <img  :src="p.img"  :style="{width:'70%',height:'70%'}"/>
+          <div    :style="{fontSize:'1vw'}"> {{p.name}} </div>
         </div>
       </div>
     </div>
@@ -90,6 +90,8 @@ export default {
 }
 .avatar
 {
+  width: 10px;
+  height: 10px;
 }
 
 </style>

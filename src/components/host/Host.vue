@@ -1,43 +1,33 @@
 <template>
-  <!-- <div></div> -->
-
-  <div class="flexV">
-    <div class="inV">
-      <div>반대:</div>
-      <avatar_viewer
-        :list="this.list"
-        :style="{ width: '50vw', height: '50vh' }"
-      />
-    </div>
-
-    <div class="inV">
-      <div>반대:</div>
-      <avatar_viewer
-        class="inV"
-        :list="this.list"
-        :style="{ width: '50vw', height: '50vh' }"
-      />
-    </div>
-  </div>
+    <Groups :Group_DATA=this.Group_of_list />
 </template>
 
 <script>
-import avatar_viewer from "src/components/common/Avatars/avatar_viewer.vue";
+import Groups from "src/components/host/Groups.vue";
 
 export default {
   name: "App",
 
   components: {
-    avatar_viewer,
+    Groups,
   },
   data() {
     return {
-      mytxt: "asdasd",
-      list: Array,
+      Group_of_list: Array,
+      listA: Array,
+      listB: Array,
+      listC: Array,
     };
   },
   created() {
-    this.list = this.listmaker(20);
+    this.listA = this.listmaker(68);
+    this.listB = this.listmaker(71);
+    this.listC = this.listmaker(35);
+
+    this.Group_of_list = [this.listA, this.listB, this.listC];
+    // this.Group_of_list.push(listA);
+    // this.Group_of_list.push(listB);
+    // this.Group_of_list.push(listC);
   },
   methods: {
     listmaker(n) {
@@ -57,6 +47,14 @@ export default {
 </script>
 
 <style>
+html,
+body,
+#app {
+  /* height: 100%; */
+  margin: 0px;
+  padding: 0px;
+}
+
 @import "src/vm11/css/myFlex.css";
 @import "src/vm11/css/tools.css";
 </style>

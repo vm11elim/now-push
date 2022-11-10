@@ -1,14 +1,22 @@
 .debug0
 {
-  border: 1px solid gray;
+  background-color: lightgray;
+  /* border: 1px solid gray; */
+  padding: 0px;
+  margin: 0px;
 }
 .debug1
 {
   border: 1px solid blue;
+  padding: 5px;
+  margin: 5px;
+  /* background-color: b; */
 }
 .debug2
 {
   border: 1px solid red;
+  padding: 10px;
+  margin: 10px;
 }
 
 .none_select
