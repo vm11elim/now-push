@@ -10,6 +10,20 @@
     </div>
     
 
+    <!-- <div>{{vm11.firebase.people.count}}</div> -->
+    <!-- <Department :people="this.vm11.firebase.people" v-if="view_type==0"/>
+    <YesNo :people="this.vm11.firebase.people" v-if="view_type==1"/>
+    <Prefs :people="this.vm11.firebase.people" v-if="view_type==2"/> -->
+
+
+    <!-- <div>{{this.people.count}}</div> -->
+    <!-- 이 정도로 나누면 인터렉티브가 안됨... -->
+    <!-- 모듈화는 js 안에서 인터렉티브 처리하기.  -->
+    <!-- <Department :people="this.people2" v-if="view_type==0"/>
+    <YesNo :people="this.people2" v-if="view_type==1"/>
+    <Prefs :people="this.people2" v-if="view_type==2"/> -->
+
+
     <Department :people="this.people" v-if="view_type==0"/>
     <YesNo :people="this.people" v-if="view_type==1"/>
     <Prefs :people="this.people" v-if="view_type==2"/>
@@ -60,12 +74,43 @@ export default {
       
       img_url:"",
       people:{},
+      people2:{},
     };
   },
   created:function(){
-    this.FB = vm11.firebase.abc();
+    if(false)
+    {
+      this.FB = vm11.firebase.abc();
+      // this.people2 = vm11.firebase.gets().catch();//함수안에 await 이 있음.. 
 
-  this.gets();
+
+      //동기 비동기에 대한 이해가 필요함.. 
+      // 결국 결론은  vm11의 firebase.js로 모듈화 해서 치우고 싶은 것 
+      //이렇게 했을 때에 DB값 바뀌면, vue 도 바뀌는 작동하는지도 확인필요함. 
+      (async () => {
+        console.log(this.people2 = await vm11.firebase.gets())
+      })()
+
+
+
+      // setTimeout(() => this.people2 = vm11.firebase.people, 3000);
+
+      // this.people2 = vm11.firebase.people;
+      //어떻게 작업완료를 표시하지..? 
+
+      // console.log('a');
+      // setTimeout(function () {
+      //   console.log('b');
+      //   this.people2 = vm11.firebase.people;
+      // }, 5000);
+      // console.log('c');
+
+      // console.log(vm11.firebase.people);
+      
+    }
+    else
+      this.gets();
+
   // console.log(fixed_value.precepts);
   // this.get("01085429052","2022-10-23") //method1 will execute at pageload
   },

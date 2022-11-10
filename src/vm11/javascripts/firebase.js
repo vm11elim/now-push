@@ -1,10 +1,10 @@
 
-
+import vm11 from 'src/vm11/javascripts/vm11.js';
 import {db} from 'src/main.js'
 import { doc, getDoc, collection, query, where, getDocs, onSnapshot } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
-
+var people = {};
 var abc = function () {
   return "abc";
 }
@@ -29,14 +29,13 @@ var gets = async function() {
         .then((url) => {
           console.log(url);
           user.avatar = url;
-          this.people[id] = user;
+          people[id] = user;
         })
         .catch((error) => {
           user.avatar = "https://cdn4.iconfinder.com/data/icons/eon-ecommerce-i-1/32/user_profile_man-256.png";
-          this.people[id] = user;
+          people[id] = user;
         });
       });
-
 
   // 변경될 때 people에 수정됨. 
 
@@ -44,7 +43,7 @@ var gets = async function() {
   const q = query(collection(db, "users"));//, where("true", "==", "true"));
   const unsubscribe = onSnapshot(q, (querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      var person = this.people[doc.id];
+      var person = people[doc.id];
       var edited = doc.data();
       person.agree = edited.agree;
       person.vote_value = edited.vote_value;
@@ -61,6 +60,8 @@ var gets = async function() {
     });
   });      
 
+  return people;
+
 }
 
 var get = async function(phone,date) {  
@@ -76,5 +77,7 @@ var get = async function(phone,date) {
 
 const firebase = {
   abc : abc,
+  gets : gets,
+  people : people  
 }  
 export default firebase;
