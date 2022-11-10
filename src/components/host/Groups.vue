@@ -26,18 +26,13 @@
         alignItems: start,
       }"
     >
-      <div class="inV">
-        <div>A군</div>
-        <avatar_viewer class="inV debug1" :list="this.listA" />
+
+    <!-- 좌에서 우로.  -->
+      <div class="inV" v-for="(list,i) in this.Group_DATA" :key="i">
+        <div>{{this.Group_titles[i]}}</div>
+        <avatar_viewer class="inV debug1" :list="list" />
       </div>
-      <div class="inV">
-        <div>B군</div>
-        <avatar_viewer class="inV debug1" :list="this.listB" />
-      </div>
-      <div class="inV">
-        <div>C군</div>
-        <avatar_viewer class="inV debug1" :list="this.listC" />
-      </div>
+
       
     </div>
   </div>
@@ -54,41 +49,18 @@ export default {
     avatar_viewer,
   },
   props:{
-    listA_frm: Array
-    //  {
-    // 	type: Array,
-    //     default: ()=> {
-    //     	return this.listmaker(7)
-    //     }
-    // },
-    ,
+    // listA_frm: Array
     G_txt:String,
+    Group_titles:Array,
     Group_DATA:Array,
-    listB_frm:Array,
-    listC_frm:Array,
+    // listB_frm:Array,
+    // listC_frm:Array,
   },
   data() {
     return {
-      // a: 70,
-      // b: 30,
-      // mytxt: "asdasd",
-      listA: Array,
-      listB: Array,
-      listC: Array,
     };
   },
   created() {
-    
-    // this.listA = this.listA_frm;
-    // this.listB = this.listB_frm;
-    // this.listC = this.listC_frm;
-    // this.listA = this.listmaker(20);
-
-
-    // console.log(this.Group_DATA[1]);
-    this.listA = this.Group_DATA[0];
-    this.listB = this.Group_DATA[1];
-    this.listC = this.Group_DATA[2];
   },
   methods: {
     listmaker(n) {

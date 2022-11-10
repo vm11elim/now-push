@@ -5,7 +5,8 @@
         <!-- <div  :ref="(el) => {this.cards[i] = el }" class="card" ></div> -->
         <div  :ref="(el) => {this.cards[i] = el }" class="card" >
           <img  :src="p.img"  :style="{width:'70%',height:'70%'}"/>
-          <div    :style="{fontSize:'1vw'}"> {{p.name}} </div>
+          <div    :style="{fontSize:'1vmin'}"> {{p.name}} </div>
+          <!-- <div    :style="{fontSize:'1vh'}"> {{p.name}} </div> -->
         </div>
       </div>
     </div>
