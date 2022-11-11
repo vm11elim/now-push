@@ -15,8 +15,10 @@
       <!-- <YesNo :people="this.host.people" v-if="view_type==1" :G1_length=1 /> -->
       
       <Prefs :people="this.host.people" v-if="view_type == 1" />
-      <YesNo2 :people="this.host.people" v-if="view_type == 2" />
+      <YesNo :people="this.host.people" v-if="view_type == 2" />
       <Counters :people="this.host.people" v-if="view_type == 3" />
+      <Calendar :people="this.host.people" v-if="view_type == 4" />
+      <HolyGrail :people="this.host.people" v-if="view_type == 5" />
     </div>
     <!-- <div>{{this.people.count}}</div> -->
     <!-- 이 정도로 나누면 인터렉티브가 안됨... -->
@@ -34,10 +36,13 @@
 <script>
 import vm11 from "src/vm11/javascripts/vm11.js";
 
-import Department from "@/components/host/Groups/Department.vue";
-import YesNo from "@/components/host/Groups/YesNo.vue";
-import Prefs from "@/components/host/Groups/Prefs.vue";
-import YesNo2 from "@/components/host/Groups/YesNo2.vue";
+import Department from "@/components/host/Groups/Department2.vue";
+// import Prefs from "@/components/host/Groups/Prefs.vue";
+import Prefs from "@/components/host/Groups/Prefs2.vue";
+import Calendar from "@/components/host/Groups/Calendar.vue";
+import HolyGrail from "@/components/host/Groups/HolyGrail.vue";
+// import YesNo from "@/components/host/Groups/YesNo.vue";
+import YesNo from "@/components/host/Groups/YesNo3.vue";
 import Counters from "@/components/host/Groups/Counters.vue";
 
 
@@ -50,8 +55,9 @@ export default {
     Department,
     YesNo,
     Prefs,
-    YesNo2,
     Counters,
+    Calendar,
+    HolyGrail,
   },
   data() {
     return {
@@ -59,7 +65,7 @@ export default {
       host: vm11.firebase.host,
 
       show: true,
-      view_type: 3,
+      view_type: 5,
       count: {
         yes: 0,
         no: 0,
@@ -108,7 +114,7 @@ export default {
     },
     getview_type() {
       this.view_type++;
-      if (this.view_type > 3) this.view_type = 0;
+      if (this.view_type > 5) this.view_type = 0;
     },
     // getImgUrl() {
     //     return this.img_url;

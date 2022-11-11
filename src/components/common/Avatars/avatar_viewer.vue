@@ -1,6 +1,5 @@
 <template>
   <div class="region_out" >
-    <div>adss{{list.length}}</div>
     <div ref="region" class="region">
       <div v-for="(p, i) in list" :key="p.id" >
         <!-- <div  :ref="(el) => {this.cards[i] = el }" class="card" ></div> -->
