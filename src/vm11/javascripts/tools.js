@@ -1,5 +1,5 @@
 
-var formatted_phone = function (phone) {
+function formatted_phone(phone) {
     // var phone ="asdasd";
     if(phone.length==11)
         phone = phone.substring(0,3)+"-"+phone.substring(3,7)+"-"+phone.substring(7,11);
@@ -10,7 +10,8 @@ navigator.vibrate =
   navigator.webkitVibrate ||
   navigator.mozVibrate ||
   navigator.msVibrate;
-var vibrate = function (ms) {
+
+function vibrate(ms) {
     console.log("vibrate - safari ios, fold3도 지원안하는 듯.. ");
     if (navigator.vibrate) {
       navigator.vibrate(ms); // 진동을 울리게 한다. 1000ms = 1초
@@ -19,11 +20,8 @@ var vibrate = function (ms) {
     }
 }
 
-
-
-
-const tools = {
-    formatted_phone : formatted_phone,
-    vibrate : vibrate,
-}  
-export default tools;
+  
+export default {
+  formatted_phone,
+  vibrate,
+}

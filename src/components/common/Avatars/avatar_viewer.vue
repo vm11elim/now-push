@@ -1,11 +1,13 @@
 <template>
   <div class="region_out" >
+    <div>adss{{list.length}}</div>
     <div ref="region" class="region">
       <div v-for="(p, i) in list" :key="p.id" >
         <!-- <div  :ref="(el) => {this.cards[i] = el }" class="card" ></div> -->
         <div  :ref="(el) => {this.cards[i] = el }" class="card" >
           <img  :src="p.img"  :style="{width:'70%',height:'70%'}"/>
           <div    :style="{fontSize:'1vmin'}"> {{p.name}} </div>
+          <div    :style="{fontSize:'1vmin'}"> {{p.vote_value}} </div>
           <!-- <div    :style="{fontSize:'1vh'}"> {{p.name}} </div> -->
         </div>
       </div>

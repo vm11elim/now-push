@@ -62,7 +62,7 @@ export default {
     listmaker2(arr) {
       var list2 = [];
       for (var i = 0; i < arr.length; i++) {
-        var myObj = new Object();
+        var myObj = arr[i];//new Object();
         myObj.name = arr[i].name;
         myObj["img"] =arr[i].avatar;// "https://cdn3.iconfinder.com/data/icons/web-and-mobile-colored-icons-vol-1/128/27-32.png";
         list2.push(myObj);

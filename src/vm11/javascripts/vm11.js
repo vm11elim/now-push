@@ -1,14 +1,15 @@
-import gridMaker from './gridMaker.js'
-import tools from './tools.js'
-import firebase from './firebase.js'
 
-var get_vm11 = function () {
-    return "vm11";
+import firebase from './firebase.js'
+// import timer from './timer.js'
+
+import tools from './tools.js'
+import gridMaker from './gridMaker.js'
+
+export default {
+    firebase,
+    // timer,
+
+    tools,
+    gridMaker,
 }
-const vm11 = {
-    get_vm11 : get_vm11 ,
-    tools : tools,
-    gridMaker : gridMaker,
-    firebase: firebase,
-}  
-export default vm11;
+// export let vm11;

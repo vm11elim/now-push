@@ -1,4 +1,5 @@
 <template>
+  <div>{{G1_length}}</div>
   <Groups :Group_titles="this.Group_title" :Group_DATA="this.Group_data" />
 </template>
 
@@ -11,6 +12,7 @@ export default {
   props:
   {
     people: Object,
+    G1_length: Number,
   },
   components: {
     Groups,
@@ -19,6 +21,7 @@ export default {
     return {
       Group_title: Array,
       Group_data: Array,
+      
     };
   },
   created() {
@@ -53,7 +56,7 @@ export default {
     listmaker2(arr) {
       var list2 = [];
       for (var i = 0; i < arr.length; i++) {
-        var myObj = new Object();
+        var myObj = arr[i];
         myObj.name = arr[i].name;
         myObj["img"] =arr[i].avatar;// "https://cdn3.iconfinder.com/data/icons/web-and-mobile-colored-icons-vol-1/128/27-32.png";
         list2.push(myObj);

@@ -22,6 +22,10 @@
   flex-grow: 1;
   width: 100%;
 }
+.fb2
+{
+  flex-grow: 2 !important;
+}
 
 .p10
 {

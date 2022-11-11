@@ -6,14 +6,17 @@ import Host from "src/components/host/Host.vue";// 관리자 web.
 import Peer from "src/components/peer/Peer.vue";// 구성원 pc.
 import Counters from "src/components/peer/Counters.vue";
 import TestDebug from "src/components/TestDebug/TestDebug.vue";
+import TestDebug2 from "src/components/TestDebug/TestDebug2.vue";
 // import About from "src/components/About.vue";
 
 const routes = [
+  
   {
     path: "/",
     // name: "",
     // component: Home,
     component: Host,
+    // component: TestDebug2,
     // params: {phone:"010-8542-9052"},
     // props: (route) => ({ phone: route.params.phone ||  })
   },

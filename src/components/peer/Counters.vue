@@ -12,14 +12,11 @@
       <Counter_Card
         :txt="item.txt"
         :cnt="item.cnt"
-        @plus="
-          item.cnt++;
-          this.do_toast(item.txt + '  + 1');
-        "
+        @plus="item.cnt++; this.set_counter_value(item,i);"
         @minus="
           if (item.cnt != 0) {
             item.cnt--;
-            this.do_toast(item.txt + '  - 1');
+            this.set_counter_value(item,i);
           }
         "
       ></Counter_Card>
@@ -38,6 +35,9 @@ export default {
   name: "App",
   data() {
     return {
+      vm11: vm11,
+      peer: vm11.firebase.peer,
+      // 
       Toaster_vis: false,
       Toaster_msg: "this is toast msg..",
       list: [
@@ -50,7 +50,17 @@ export default {
       // isDebug: !true
     };
   },
+  mounted: function () {
+    this.peer.get(this.$route.params.phone + "");
+  },
   methods: {
+    set_counter_value(item,i)
+    {
+      var date = '2022-11-11';
+      var fieldname = 'p'+i;
+      this.peer.counters_set_value(date,fieldname,item.cnt);
+      this.do_toast(item.txt + '  + 1');
+    },
     do_toast(msg) {
       if (false) vm11.tools.vibrate(300);
       this.Toaster_vis = true;

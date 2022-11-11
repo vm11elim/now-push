@@ -55,6 +55,18 @@ export default {
       return list2;
     },
     listmaker2(arr) {
+      // 이게 범인이었을 수도ㅓ.....
+      var list2 = [];
+      for (var i = 0; i < arr.length; i++) {
+        var myObj = arr[i];
+        // myObj.name = arr[i].name;
+        myObj["img"] = arr[i].avatar; // "https://cdn3.iconfinder.com/data/icons/web-and-mobile-colored-icons-vol-1/128/27-32.png";
+        list2.push(myObj);
+      }
+      return list2;
+    },
+    listmaker3(arr) {
+      // 이게 범인이었을 수도ㅓ.....
       var list2 = [];
       for (var i = 0; i < arr.length; i++) {
         var myObj = new Object();

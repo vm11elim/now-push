@@ -27,7 +27,10 @@
       }"
     >
 
+    <div>{{this.Group_DATA.length}}</div>
+    <div>{{this.Group_DATA[0].length}}</div>
     <!-- 좌에서 우로.  -->
+    
       <div class="inV" v-for="(list,i) in this.Group_DATA" :key="i">
         <div>{{this.Group_titles[i]}}</div>
         <avatar_viewer class="inV debug1" :list="list" />
