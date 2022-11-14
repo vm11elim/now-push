@@ -1,3 +1,4 @@
+
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index.js' // <---
@@ -81,7 +82,18 @@ const longClickInstance = longClickDirective({delay: 400, interval: 50})
 
 // createApp(App).directive('longclick', longClickInstance).use(VueHead).use(vueCookies).use(router).mount('#app');
 
-createApp(App).directive('longclick', longClickInstance).use(vueCookies).use(router).mount('#app');
+
+//vuetify관련. 
+import vuetify from './plugins/vuetify'
+import { loadFonts } from './plugins/webfontloader'
+loadFonts()
+
+// createApp(App)
+//   .use(router)
+//   .mount('#app')
+
+
+createApp(App).use(vuetify).directive('longclick', longClickInstance).use(vueCookies).use(router).mount('#app');
 
 
 // createApp(App).mount('#app')//초기화 끝난후 마운트 시켜야함. 

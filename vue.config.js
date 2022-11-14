@@ -6,7 +6,9 @@ module.exports = defineConfig({
   // disableHostCheck: true,
 
   transpileDependencies: true,
+
   lintOnSave: false,
+
   configureWebpack: {
     resolve: {
       alias: {
@@ -14,4 +16,10 @@ module.exports = defineConfig({
       }
     }
   },
+
+  pluginOptions: {
+    vuetify: {
+			// https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vuetify-loader
+		}
+  }
 })

@@ -1,6 +1,7 @@
 import vm11 from 'src/vm11/javascripts/vm11.js';
 import { db } from 'src/main.js'
 import { doc, getDoc, collection, query, where, getDocs, onSnapshot } from "firebase/firestore";
+// import { doc, getDoc, collection, query, where, getDocs, onSnapshot } from "firebase/firestore/lite";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 var timer_n = 0;
@@ -42,7 +43,8 @@ async function abc() {
   return result;
 }
 
-async function gets2() {
+async function gets2() 
+{
 
   // this.people_cnt = 9;
   const querySnapshot = await getDocs(collection(db, "users"));
@@ -111,7 +113,7 @@ async function gets2() {
     });
   });
 
-  
+
 }
 
 // DB가 변경될 때, dynamic하게 변화할 수 있게. lists가 변경되면 처리될 수 있도록. 다 같은 lists를 공유한다. //근데 이건 객체지향의 원칙에 어긋남.. //어떻게 처리하지? 
