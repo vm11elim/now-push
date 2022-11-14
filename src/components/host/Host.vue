@@ -3,6 +3,7 @@
     <!-- <div>{{this.fb_abc}}</div> -->
     <!-- <div>{{this.host.global_abc}}</div> -->
     <!-- <div>{{this.host.people.count}}</div> -->
+    <div>{{$route.params.view_type}}</div>
 
     <div align="right">
       <button v-on:click="getview_type()" align="right">보기</button>
@@ -11,14 +12,15 @@
     <div v-if="!this.host.finished">{{ this.host.loading_status() }}</div>
     <div v-if="this.host.finished">
       <!-- <div>{{this.host.global_abc}}</div> -->
-      <Department :people="this.host.people" v-if="view_type == 0" />
+      <Department :people="this.host.people" v-if="$route.params.view_type == 0" />
       <!-- <YesNo :people="this.host.people" v-if="view_type==1" :G1_length=1 /> -->
       
-      <Prefs :people="this.host.people" v-if="view_type == 1" />
-      <YesNo :people="this.host.people" v-if="view_type == 2" />
-      <Counters :people="this.host.people" v-if="view_type == 3" />
-      <Calendar :people="this.host.people" v-if="view_type == 4" />
-      <HolyGrail :people="this.host.people" v-if="view_type == 5" />
+      <!-- this.$route.params.view_type -->
+      <Prefs :people="this.host.people" v-if="$route.params.view_type == 1" />
+      <YesNo :people="this.host.people" v-if="$route.params.view_type == 2" />
+      <Counters :people="this.host.people" v-if="$route.params.view_type == 3" />
+      <Calendar :people="this.host.people" v-if="$route.params.view_type == 4" />
+      <HolyGrail :people="this.host.people" v-if="$route.params.view_type == 5" />
     </div>
     <!-- <div>{{this.people.count}}</div> -->
     <!-- 이 정도로 나누면 인터렉티브가 안됨... -->
@@ -65,7 +67,9 @@ export default {
       host: vm11.firebase.host,
 
       show: true,
-      view_type: 5,
+      // view_type: 5,
+      // view_type: this.$route.params.view_type,
+      
       count: {
         yes: 0,
         no: 0,
