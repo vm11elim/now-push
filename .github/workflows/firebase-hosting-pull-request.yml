@@ -13,6 +13,7 @@ jobs:
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
+          node-version: 16.14.2
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_NOW_PUSH_5E29E }}"
           projectId: now-push-5e29e
